@@ -1,0 +1,49 @@
+<html>
+<head>
+   
+<title>Catalogo de vehículos </title>
+</head>
+<body>
+    
+    <h1>
+        Vehículos Online
+
+</h1>{% block content %}
+<form action="buscar" method="POST">
+    {% csrf_token %}
+    <p>Marca: <input type="text" name="marca"></p>
+    <input type="submit" value="Enviar">
+    </form>
+    {% if automoviles %}
+    {% for automovil in automoviles %}
+        <li>{{automovil.marca}}</li>
+        <li>{{automovil.modelo}}</li>
+        <li>{{automovil.año_de_fabricacion}}</li>
+        <li>{{automovil.kilometraje}}</li>
+        <li>{{automovil.link}}</li>
+        {% endfor %}
+        <li>tipo: automovil</li>
+    {%endif%}
+    {%if motos %}
+    {% for moto in motos %}
+        <li>{{moto.marca}}</li>
+        <li>{{moto.modelo}}</li>
+        <li>{{moto.año_de_fabricacion}}</li>
+        <li>{{moto.kilometraje}}</li>
+        <li>{{moto.link}}</li>
+    {% endfor %}
+        <li>tipo: moto</li>
+    {%endif%}
+    {% if camionetas %}
+    {% for camioneta in camionetas %}
+        <li>{{camioneta.marca}}</li>
+        <li>{{camioneta.modelo}}</li>
+        <li>{{camioneta.año_de_fabricacion}}</li>
+        <li>{{camioneta.kilometraje}}</li>
+        <li>{{camioneta.link}}</li>
+        {% endfor %}
+        <li>tipo: camioneta</li>
+        {%endif%}
+    {% endblock %}
+    </body>
+</html>
