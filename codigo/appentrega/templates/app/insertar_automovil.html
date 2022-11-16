@@ -6,7 +6,7 @@
     Catalogo de Vehiculos Online
     </h1>
     {% block content %}
-    <form action="insertar_automoviles" method="POST">
+    <form action= "insertar-automoviles"  method="POST">
         {% csrf_token %}
         <p>marca: <input type="text" name="marca"></p>
         <p>modelo: <input type="text" name="modelo"></p>
