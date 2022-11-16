@@ -1,6 +1,7 @@
 from .models import automoviles, motos, camionetas
 from django.shortcuts import render
 from django.http import HttpResponse
+from appentrega.forms import AutomovilesFormulario, MotosFormulario, CamionetaFormulario
 
 def buscar(request):
     if request.method == "POST":
@@ -19,7 +20,7 @@ def buscar(request):
             return render ( request, "appentrega/buscar.html", {"camioneta", camioneta})
 
         else:
-            return HttpResponse("Material No Encontrado")
+            return HttpResponse("Vehiculo No Encontrado")
         
     return render(request, "buscar.html")
 
@@ -35,11 +36,11 @@ def insertar_motos(request):
           moto = motos(marca = request.POST["marca"], modelo = request.POST["modelo"], año_de_fabricacion = request.POST["año_de_fabricacion"], kilometraje = request.POST["kilometraje"], link = request.POST["link"])
           moto.save()
           return render(request, "appentrega/insertar_moto.html")
-    return render(request, "insertar_moto.html")
+    return render(request, "appentrega/insertar_moto.html")
 
 def insertar_camioneta(request):
     if request.method == "POST":
         chata = camionetas (marca = request.POST["marca"], modelo = request.POST["modelo"], año_de_fabricacion = request.POST["año_de_fabricacion"], kilometraje = request.POST["kilometraje"], link = request.POST["link"])
         chata.save()
         return render(request, "appentrega/insertar_camioneta.html")
-    return render(request, "insertar_camioneta")
+    return render(request, "appentrega/insertar_camioneta")
